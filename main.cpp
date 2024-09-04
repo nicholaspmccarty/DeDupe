@@ -2,7 +2,7 @@
  * A simple program to dedupe a list of users, IP-addresses, and ports
  * to retain either the latest two or just the 3rd (cummulatively)
  * entry for each user.
- *
+ * Copyright (C) 2024 nicholasmccarty252@gmail.com
  */
 
 #include <iostream>
