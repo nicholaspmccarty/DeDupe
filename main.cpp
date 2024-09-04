@@ -53,7 +53,7 @@ DataList dedupe(std::istream& is) {
     // additional details.
     OccursList occurs;
 
-    
+    size_t index = 0;
     std::string name, ip, port;
     // Keep processing triplets of data from the input stream.
     for (std::string line; std::getline(is, line);) {
@@ -66,6 +66,23 @@ DataList dedupe(std::istream& is) {
         if (occurs.find(name) == occurs.end()) {
             occurs[name] = std::vector<size_t>(); // Assign an empty vector
     }
+
+    // AI developed this logic until line 82.
+    if (occurs[name].size() == 2) {
+            // Clear the previous two entries by setting them to empty strings
+            data[occurs[name][0]] = ""; // First occurrence
+            data[occurs[name][1]] = ""; // Second occurrence
+
+            // Remove the old indices from the vector
+            occurs[name].clear(); 
+        }
+
+        // Add the current line to the data vector and store its index
+        data.push_back(line);
+        occurs[name].push_back(index); // Add the index of this line to the user's entry list
+
+        ++index;
+
 
 
     }
