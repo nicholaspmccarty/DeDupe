@@ -57,9 +57,15 @@ DataList dedupe(std::istream& is) {
     std::string name, ip, port;
     // Keep processing triplets of data from the input stream.
     for (std::string line; std::getline(is, line);) {
-    
-    std::istringstream iss(line);
-    iss >> name >> ip >> port;
+        
+        // Grab the line and split it up to name, ip, port
+        std::istringstream iss(line);
+        iss >> name >> ip >> port;
+        
+        // If does not exist, add to map.
+        if (occurs.find(name) == occurs.end()) {
+            occurs[name] = std::vector<size_t>(); // Assign an empty vector
+    }
 
 
     }
