@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
-
+#include <sstream>
 // Synonyms to make the code a bit more readable.
 
 /** The list of input lines read from a given data file.  This list is
@@ -54,10 +54,12 @@ DataList dedupe(std::istream& is) {
     OccursList occurs;
 
     
-    
+    std::string name, ip, port;
     // Keep processing triplets of data from the input stream.
     for (std::string line; std::getline(is, line);) {
     
+    std::istringstream iss(line);
+    iss >> name >> ip >> port;
 
 
     }
